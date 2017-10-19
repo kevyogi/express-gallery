@@ -1,0 +1,48 @@
+* {
+  -webkit-box-sizing: border-box;
+}
+
+
+.main-header {
+  margin: auto;
+  padding-top: 170px;
+  height: 400px;
+  width: 80%;
+  background:  url('/assets/header.jpg') no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+
+h1 {
+  font-size: 60px;
+}
+
+.welcome{
+  display: inline-block;
+  width: 30%;
+  padding-left: 2%;
+}
+
+.architect{
+  display: inline-block;
+  width: 50%;
+  border: #e1e1e1;
+  border-style: solid ;
+  border-width: 0px 1px 0px 0px;
+  text-align: right;
+  padding-right: 5%;
+}
+
+.headerwrapper{
+  border-style: dotted ;
+  border-width: 1px 0px 0px 0px;
+}
+
+.thumbnail{
+  width: 25% ;
+  height: 200px;
+  border: solid;
+  display: inline-block;
+  margin: 1% 1% 5% 5%;
+}
