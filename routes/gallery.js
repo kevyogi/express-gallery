@@ -36,6 +36,14 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.get('/:id/edit', (req, res) => {
+  const galleryId = req.params.id;
+  return Gallery.findById(galleryId)
+    .then((theGallery) => {
+      return res.render('partials/edit', theGallery.dataValues);
+    });
+});
+
 router.delete('/:id', (req, res)=>{
   const galleryId = req.params.id;
   return Gallery.destroy({

@@ -1,6 +1,4 @@
 /*jshint esversion:6*/
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -8,6 +6,7 @@ const exphbs = require('express-handlebars');
 const PORT = 8888;
 const galleryRoute = require('./routes/gallery.js');
 const db = require('./models');
+const methodOverride = require('method-override');
 
 const hbs = exphbs.create({
   extname: '.hbs',
@@ -17,6 +16,7 @@ const hbs = exphbs.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 //app.use(express.static('public'));
 
