@@ -23,6 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/gallery', galleryRoute);
 
 app.listen(PORT, () => {
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   console.log(`Listening on port: ${PORT}`);
 });

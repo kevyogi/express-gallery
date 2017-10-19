@@ -7,6 +7,15 @@ const Gallery = db.gallery;
 const Author = db.author;
 
 
+router.get('/', (req, res) => {
+  return Gallery.findAll()
+  .then ( (theGallery) => {
+    const data = theGallery[0].dataValues;
+    console.log(theGallery);
+    res.render('partials/gallery', data);
+  });
+});
+
 router.post('/', (req, res) => {
   const author = req.body.author;
   const link = req.body.link;
@@ -17,11 +26,8 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/', (req, res) => {
-  return Gallery.findAll()
-  .then ( (theGallery) => {
-    return res.json(theGallery);
-  });
+router.get('/new', (req, res) => {
+  console.log('router.getnew');
 });
 
 router.get('/:id', (req, res) => {
@@ -41,9 +47,7 @@ router.delete('/:id', (req, res)=>{
   });
 });
 
-/*app.get('/', (res, req) => {
 
-});*/
 
 
 module.exports = router;
