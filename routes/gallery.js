@@ -20,19 +20,19 @@ router.post('/', (req, res) => {
   const description = req.body.description;
   return Gallery.create({author: author, link: link, description: description})
   .then ((newGallery) => {
-    return res.json(newGallery);
+    return res.redirect('/gallery');
   });
 });
 
 router.get('/new', (req, res) => {
-  console.log('router.getnew');
+  res.render('partials/new');
 });
 
 router.get('/:id', (req, res) => {
   const galleryId = req.params.id;
   return Gallery.findById(galleryId)
   .then ((theGallery) => {
-    return res.json(theGallery);
+    return res.render('partials/gallery_single', theGallery.dataValues);
   });
 });
 
@@ -42,10 +42,29 @@ router.delete('/:id', (req, res)=>{
     where: {
       id: galleryId
     }
+  })
+  .then(() => {
+    return res.redirect('/gallery');
   });
 });
 
-
+router.put('/:id', (req, res) => {
+  const galleryId = req.params.id;
+  const author = req.body.author;
+  const link = req.body.link;
+  const description = req.body.description;
+  return Gallery.findById(galleryId)
+    .then((theGallery) => {
+      Gallery.update({
+        author: author,
+        link: link,
+        description: description
+      }, {where: {
+            id: galleryId}
+    });
+      res.redirect('/gallery');
+ });
+});
 
 
 module.exports = router;

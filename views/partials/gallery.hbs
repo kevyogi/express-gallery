@@ -1,8 +1,9 @@
 <div>
   {{#each Gallery}}
-  {{author}}
-  {{id}}
-  {{link}}
-  {{description}}
+  <div>{{author}}-{{link}}</div>
+  <div>
+    <img src="{{link}}" alt="gallery image">
+  </div>
+
   {{/each}}
 </div>
