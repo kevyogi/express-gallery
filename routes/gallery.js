@@ -10,9 +10,7 @@ const Author = db.author;
 router.get('/', (req, res) => {
   return Gallery.findAll()
   .then ( (theGallery) => {
-    const data = theGallery[0].dataValues;
-    console.log(theGallery);
-    res.render('partials/gallery', data);
+    res.render('partials/gallery', {Gallery: theGallery});
   });
 });
 
