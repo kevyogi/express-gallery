@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
+    "username": "meloverarana",
     "password": null,
-    "database": "database_development",
+    "database": "gallery",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
