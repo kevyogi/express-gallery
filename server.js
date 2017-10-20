@@ -22,6 +22,7 @@ app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(session({
+  store: new redis(),
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false
