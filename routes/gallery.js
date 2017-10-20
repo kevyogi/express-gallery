@@ -41,14 +41,15 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', isAuthenticated, (req, res) => {
   const galleryId = req.params.id;
-  console.log(req.user.id);
-  console.log(req.body);
-  console.log('req.user:', req.user);
+  // console.log(req.user.id);
+  // console.log(req.body);
+  // console.log('req.user:', req.user);
     return Gallery.findById(galleryId)
       .then((theGallery) => {
         if(req.user.id === theGallery.userId){
           console.log(theGallery.dataValues);
           let locals = {
+            id: req.params.id,
             user: req.user.username,
             link: theGallery.dataValues.link,
             description: theGallery.dataValues.description
@@ -69,20 +70,22 @@ router.delete('/:id', (req, res)=>{
     }
   })
   .then(() => {
+    let locals = {
+      id: galleryId
+    }
     return res.redirect('/gallery');
   });
 });
 
 router.put('/:id', (req, res) => {
-  console.log(req);
+  // console.log('req:', req);
+  console.log('req.body:', req.body);
   const galleryId = req.params.id;
-  const author = req.body.author;
   const link = req.body.link;
   const description = req.body.description;
   return Gallery.findById(galleryId)
     .then((theGallery) => {
       Gallery.update({
-        author: author,
         link: link,
         description: description
       }, {where: {
