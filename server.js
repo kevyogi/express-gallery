@@ -41,7 +41,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
   console.log('deserializing');
-  db.users.findOne({where: { id: user.id }})
+  db.user.findOne({where: { id: user.id }})
   .then((user) => {
     return done(null, {
       id: user.id,
@@ -51,7 +51,7 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
-  db.users.findOne({where: {username: username}})
+  db.user.findOne({where: {username: username}})
     .then((user) => {
       if(user === null){
         return done(null, false, {message: 'bad username or password'});
@@ -85,7 +85,7 @@ app.get('/logout', (req, res) => {
 app.post('/register', (req, res) => {
   bcrypt.genSalt(saltRounds, function(err, salt){
     bcrypt.hash(req.body.password, salt, function(err, hash){
-      db.users.create({
+      db.user.create({
         username: req.body.username,
         password: hash
       })
