@@ -115,6 +115,6 @@ function isAuthenticated(req, res, next){
 }
 
 app.listen(PORT, () => {
-  db.sequelize.sync({ force: true });
+  db.sequelize.sync({ force: false });
   console.log(`Listening on port: ${PORT}`);
 });
