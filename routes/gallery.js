@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', isAuthenticated, (req, res) => {
   let locals = {
     user: req.user.username
   }
