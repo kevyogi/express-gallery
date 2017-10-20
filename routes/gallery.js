@@ -7,6 +7,7 @@ const Gallery = db.gallery;
 const user = db.user;
 
 
+
 router.get('/', (req, res) => {
   return Gallery.findAll()
   .then ( (theGallery) => {
@@ -23,6 +24,7 @@ router.post('/', (req, res) => {
     return res.redirect('/gallery');
   });
 });
+
 
 router.get('/new', isAuthenticated, (req, res) => {
   let locals = {
