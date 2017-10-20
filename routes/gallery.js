@@ -15,16 +15,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const author = req.body.author;
+  const user = req.body.user;
   const link = req.body.link;
   const description = req.body.description;
-  return Gallery.create({author: author, link: link, description: description})
+  return Gallery.create({user: user, link: link, description: description, userId: req.user.id})
   .then ((newGallery) => {
     return res.redirect('/gallery');
   });
 });
 
 router.get('/new', (req, res) => {
+  req.body
   res.render('partials/new');
 });
 
@@ -36,12 +37,15 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isAuthenticated, (req, res) => {
   const galleryId = req.params.id;
-  return Gallery.findById(galleryId)
-    .then((theGallery) => {
-      return res.render('partials/edit', theGallery.dataValues);
-    });
+  console.log(req.user.id);
+  console.log(req.body);
+    return Gallery.findById(galleryId)
+      .then((theGallery) => {
+        console.log(theGallery.userId);
+        return res.render('partials/edit', theGallery.dataValues);
+      });
 });
 
 router.delete('/:id', (req, res)=>{
@@ -74,6 +78,11 @@ router.put('/:id', (req, res) => {
       res.redirect('/gallery');
  });
 });
+
+function isAuthenticated(req, res, next){
+  if(req.isAuthenticated()) {next();}
+  else{res.redirect('/')}
+}
 
 
 module.exports = router;
