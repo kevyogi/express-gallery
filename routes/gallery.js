@@ -57,6 +57,7 @@ router.delete('/:id', (req, res)=>{
 });
 
 router.put('/:id', (req, res) => {
+  console.log(req);
   const galleryId = req.params.id;
   const author = req.body.author;
   const link = req.body.link;

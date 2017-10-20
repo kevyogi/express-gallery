@@ -72,6 +72,11 @@ passport.use(new LocalStrategy(function (username, password, done) {
     });
 }));
 
+app.get('/', (req, res) => {
+  console.log('login');
+  res.render('partials/login');
+});
+
 app.post('/login', passport.authenticate('local', {
   successRedirect: '/secret',
   failureRedirect: '/'
