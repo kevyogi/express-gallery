@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 const Gallery = db.gallery;
-const Author = db.author;
+const User = db.user;
 
 
 router.get('/', (req, res) => {
@@ -15,17 +15,20 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const author = req.body.author;
+  console.log('HEEEERE:',req);
+  const user = req.body.user;
   const link = req.body.link;
   const description = req.body.description;
-  return Gallery.create({author: author, link: link, description: description})
+  return Gallery.create({user: user, link: link, description: description})
   .then ((newGallery) => {
     return res.redirect('/gallery');
   });
 });
 
 router.get('/new', (req, res) => {
-  res.render('partials/new');
+  const data = req.body;
+  console.log('ID:',req.sessionID);
+  res.render('partials/new', data);
 });
 
 router.get('/:id', (req, res) => {
@@ -36,12 +39,14 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', isAuthenticated, (req, res) => {
   const galleryId = req.params.id;
-  return Gallery.findById(galleryId)
-    .then((theGallery) => {
-      return res.render('partials/edit', theGallery.dataValues);
-    });
+  if(req.userId === user.id){
+    return Gallery.findById(galleryId)
+      .then((theGallery) => {
+        return res.render('partials/edit', theGallery.dataValues);
+      });
+    }
 });
 
 router.delete('/:id', (req, res)=>{
@@ -59,13 +64,13 @@ router.delete('/:id', (req, res)=>{
 router.put('/:id', (req, res) => {
   console.log(req);
   const galleryId = req.params.id;
-  const author = req.body.author;
+  const user = req.body.user;
   const link = req.body.link;
   const description = req.body.description;
   return Gallery.findById(galleryId)
     .then((theGallery) => {
       Gallery.update({
-        author: author,
+        user: user,
         link: link,
         description: description
       }, {where: {
@@ -74,6 +79,11 @@ router.put('/:id', (req, res) => {
       res.redirect('/gallery');
  });
 });
+
+function isAuthenticated(req, res, next){
+  if(req.isAuthenticated()) {next();}
+  else{res.redirect('/')}
+}
 
 
 module.exports = router;
