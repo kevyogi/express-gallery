@@ -43,10 +43,14 @@ router.get('/:id/edit', isAuthenticated, (req, res) => {
   console.log(req.body);
     return Gallery.findById(galleryId)
       .then((theGallery) => {
-        console.log(theGallery.userId);
-        return res.render('partials/edit', theGallery.dataValues);
+        if(req.user.id === theGallery.userId){
+          return res.render('partials/edit', theGallery.dataValues);
+        }else{
+          return res.redirect('/');
+        }
       });
 });
+
 
 router.delete('/:id', (req, res)=>{
   const galleryId = req.params.id;
