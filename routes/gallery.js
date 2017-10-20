@@ -40,6 +40,7 @@ router.get('/:id', (req, res) => {
     return user.findById(theGallery.userId)
     .then((theUser) => {
       let locals = {
+        id: galleryId,
         user: theUser.username,
         title: theGallery.dataValues.title,
         link: theGallery.dataValues.link,
@@ -50,12 +51,14 @@ router.get('/:id', (req, res) => {
   });
 });
 
+
 router.get('/:id/edit', isAuthenticated, (req, res) => {
+  console.log('ROUTING TO EDIT? ');
   const galleryId = req.params.id;
     return Gallery.findById(galleryId)
       .then((theGallery) => {
         if(req.user.id === theGallery.userId){
-          console.log(theGallery.dataValues);
+//          console.log(theGallery.dataValues);
           let locals = {
             id: req.params.id,
             user: req.user.username,

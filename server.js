@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local', {
-  successRedirect: '/secret',
+  successRedirect: '/gallery',
   failureRedirect: '/'
 }));
 
@@ -107,16 +107,9 @@ app.post('/register', (req, res) => {
 
 function isAuthenticated(req, res, next){
   if(req.isAuthenticated()) {next();}
-  else{res.redirect('/')}
+  else{res.redirect('/');
+  }
 }
-
-app.get('/secret', isAuthenticated, (req, res) => {
-  console.log('req.user:', req.user);
-  console.log('req.user.id:', req.user.id);
-  console.log('req.username:', req.user.username);
-  console.log('req.user.password:', req.user.password);
-  res.send('you found the secret');
-});
 
 app.listen(PORT, () => {
   db.sequelize.sync({ force: false });

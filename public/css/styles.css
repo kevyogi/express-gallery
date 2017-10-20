@@ -42,7 +42,16 @@ h1 {
 .thumbnail{
   width: 25% ;
   height: 200px;
-  border: solid;
   display: inline-block;
   margin: 1% 1% 5% 5%;
+}
+
+.thumbimg{
+  width: 100%;
+  height: 100%;
+}
+
+
+.title{
+  color: #a6a6a6;
 }
