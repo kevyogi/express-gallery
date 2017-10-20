@@ -25,8 +25,10 @@ router.post('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  req.body
-  res.render('partials/new');
+  let locals = {
+    user: req.user.username
+  }
+  res.render('partials/new', locals);
 });
 
 router.get('/:id', (req, res) => {
