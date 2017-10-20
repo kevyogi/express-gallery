@@ -16,6 +16,7 @@ const hbs = exphbs.create({
   extname: '.hbs',
   defaultLayout: 'main'
 });
+const redis = require('connect-redis')(session);
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
@@ -41,6 +42,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
+  console.log(user);
   console.log('deserializing');
   db.user.findOne({where: { id: user.id }})
   .then((user) => {
@@ -113,6 +115,6 @@ function isAuthenticated(req, res, next){
 }
 
 app.listen(PORT, () => {
-  db.sequelize.sync({ force: false });
+  db.sequelize.sync({ force: true });
   console.log(`Listening on port: ${PORT}`);
 });
