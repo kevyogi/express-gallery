@@ -5,34 +5,36 @@
 </div>
 <div class="sideBarTop">
   <div class="welcomeSingle">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
-    </div>
-</div>
-<div class="viewSingle">
-  <div>{{title}}-{{link}}</div>
-  <div class="imgwrapper">
-    <img class="imgSingle" src="{{link}}" alt="gallery image">
   </div>
-  <div>{{description}}</div>
 </div>
 
-<div class="sideBar">
-
-{{#each collection}}
-  <a href="/gallery/{{id}}">
-    <div class="thumbnail">
-      <img class="thumbimg" src="{{link}}" alt="image here">
-        <div class="title"><b>{{title}}</b>
-        </div>
-      </div>
+<div id="holder">
+  <div class="viewSingle">
+    <div>{{title}}</div>
+    <div class="imgwrapper">
+      <img class="imgSingle" src="{{link}}" alt="gallery image">
     </div>
+    <div>{{description}}</div>
+  </div>
+
+  <div class="sideBar">
+
+  {{#each collection}}
+    <a href="/gallery/{{id}}">
+      <div class="thumbnail">
+        <img class="thumbimg" src="{{link}}" alt="image here">
+          <div class="title"><b>{{title}}</b>
+          </div>
+        </div>
+    </a>
+  {{/each}}
+
+  </div>
+
+  <a href="http://localhost:8888/gallery/{{id}}/edit">
+    <button>Edit</button>
   </a>
-{{/each}}
-
 </div>
-
-<a href="http://localhost:8888/gallery/{{id}}/edit">
-  <button>Edit</button>
-</a>
 
 
 

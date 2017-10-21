@@ -182,7 +182,7 @@ body{
 
       .imgSingle{
         width: 700px;
-        height: 1500px;
+        height: 700px;
         background-size: cover;
 
        }
@@ -233,13 +233,16 @@ label{
  width: 200px;
  border: solid black 1px;
  font-size: 20px;
-}
-
-a{
  padding-left: 90px;
  padding-right: 90px;
  text-decoration: none;
 }
+
+// a{
+//  padding-left: 90px;
+//  padding-right: 90px;
+//  text-decoration: none;
+// }
 
 #newDiv{
  min-width: 300px;
