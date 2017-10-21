@@ -33,7 +33,7 @@ router.get('/new', isAuthenticated, (req, res) => {
   res.render('partials/new', locals);
 });
 
-router.get('/:id', (req, res) => {
+/*router.get('/:id', (req, res) => {
   const galleryId = req.params.id;
   return Gallery.findById(galleryId)
   .then ((theGallery) => {
@@ -47,6 +47,29 @@ router.get('/:id', (req, res) => {
         description: theGallery.dataValues.description
       }
       return res.render('partials/gallery_single', locals);
+    });
+  });
+});*/
+
+router.get('/:id', (req, res) => {
+  const galleryId = req.params.id;
+  return Gallery.findById(galleryId)
+  .then((singlePhoto) => {
+    return user.findById(singlePhoto.userId)
+    .then((theUser) => {
+      return Gallery.findAll()
+      .then((entireGallery) => {
+        let collection = entireGallery.slice(0, 3);
+        let locals = {
+          id: galleryId,
+          user: theUser.username,
+          title: singlePhoto.dataValues.title,
+          link: singlePhoto.dataValues.link,
+          description: singlePhoto.dataValues.description,
+          collection: collection
+        }
+        return res.render('partials/gallery_single', locals);
+      });
     });
   });
 });

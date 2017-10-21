@@ -1,22 +1,34 @@
-<div class="headerwrapper">
-    <div class="architect">
+<div class="headerwrapperSingle">
+    <div class="architectSingle">
       <h1>_ARCHITEKT</h1>
     </div>
-    <div class="welcome">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
-    </div>
-    <div id="top" class="main-header">
-  </div>
 </div>
-<div>
+<div class="sideBarTop">
+  <div class="welcomeSingle">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
+    </div>
+</div>
+<div class="viewSingle">
   <div>{{title}}-{{link}}</div>
-  <div>
-    <img src="{{link}}" alt="gallery image">
+  <div class="imgwrapper">
+    <img class="imgSingle" src="{{link}}" alt="gallery image">
   </div>
   <div>{{description}}</div>
 </div>
-{{!-- <form action="/gallery/{{id}}/edit" method="GET" enctype="application/x-www-form-urlencoded">
-  <button name="Edit">Edit</button></a>
-</form> --}}
+
+<div class="sideBar">
+
+{{#each collection}}
+  <a href="/gallery/{{id}}">
+    <div class="thumbnail">
+      <img class="thumbimg" src="{{link}}" alt="image here">
+        <div class="title"><b>{{title}}</b>
+        </div>
+      </div>
+    </div>
+  </a>
+{{/each}}
+
+</div>
 
 <a href="http://localhost:8888/gallery/{{id}}/edit">
   <button>Edit</button>

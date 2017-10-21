@@ -1,16 +1,23 @@
 .main-header {
   margin: auto;
-  padding-top: 170px;
+  padding-top: 40px;
   height: 400px;
   width: 80%;
-  background: url("/assets/header.jpg") no-repeat center;
+  background: url("http://travelhdwallpapers.com/wp-content/uploads/2014/02/The-Louvre-18.jpg") no-repeat center;
   -webkit-background-size: cover;
-  background-size: cover;
-  border-width: 0px 0px 5px 0px; }
+  background-size: cover; }
+
+.welcome {
+  color: #cccccc; }
+
+.arrow {
+  width: 75px;
+  height: 75px;
+  margin-top: 150px; }
 
 body {
   text-align: center; }
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 360px) {
     body .thumbnail {
       max-width: 380px;
       height: 200px;
@@ -20,7 +27,9 @@ body {
       display: none; }
     body .architect {
       border-style: solid;
-      border: white; } }
+      border: white; }
+    body .architectWord {
+      font-size: 15px; } }
   @media screen and (min-width: 600px) {
     body .thumbnail {
       max-width: 380px;
@@ -28,10 +37,17 @@ body {
       display: inline-block;
       margin: 1% 1% 5% 1%; }
     body .welcome {
-      display: inline-block; }
+      display: inline-block;
+      max-width: 300px;
+      padding-bottom: 10px;
+      border-width: 2px 0px 2px 0px;
+      border-style: dotted;
+      margin-bottom: 10px; }
     body .architect {
       border-style: solid;
-      border: #e1e1e1; } }
+      border: #e1e1e1;
+      height: 77px;
+      font-size: 30px; } }
   @media screen and (min-width: 900px) {
     body .thumbnail {
       max-width: 380px;
@@ -41,40 +57,120 @@ body {
     body .welcome {
       display: inline-block;
       width: 30%;
-      padding-left: 2%; }
+      padding-left: 2%;
+      border-style: none; }
     body .architect {
       display: inline-block;
       width: 50%;
       border: #e1e1e1;
       border-style: solid;
-      border-width: 0px 1px 0px 0px; } }
+      border-width: 0px 1px 0px 0px;
+      padding-right: 2%;
+      font-family: 'Cantata One', serif;
+      font-size: 40px;
+      height: 80px;
+      padding-top: 1px; }
+    body .welcomeSingle {
+      display: inline-block;
+      border-style: none; }
+    body .architectSingle {
+      display: inline-block;
+      padding-right: 2%;
+      font-family: 'Cantata One', serif;
+      font-size: 40px;
+      height: 80px;
+      padding-top: 1px; }
+    body .headerwrapperSingle {
+      border-style: dotted;
+      border-width: 1px 0px 1px 0px;
+      padding-bottom: 10px;
+      width: 800px;
+      display: inline-block; }
+    body .sideBarTop {
+      width: 350px;
+      display: inline-block;
+      border: #e1e1e1;
+      border-style: solid;
+      border-width: 0px 0px 0px 1px; }
+    body .viewSingle {
+      width: 700px;
+      display: inline-block; }
+    body .sideBar {
+      width: 280px;
+      display: inline-block; }
+    body .thumbimgSingle {
+      width: 100%;
+      height: 100%;
+      padding-top: 5px;
+      box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
+    body .imgwrapper {
+      max-width: 700px; }
+    body .imgSingle {
+      width: 700px;
+      height: 1500px;
+      background-size: cover; } }
 
-h1 {
-  font-size: 60px; }
-
-/* .welcome{
-  display: inline-block;
-  width: 30%;
-  padding-left: 2%;
-}
- */
-/* .architect{
-  display: inline-block;
-  width: 50%;
-  border: #e1e1e1;
-  border-style: solid ;
-  border-width: 0px 1px 0px 0px;
-  text-align: right;
-  padding-right: 5%;
-}
- */
 .headerwrapper {
   border-style: dotted;
-  border-width: 1px 0px 0px 0px; }
+  border-width: 1px 0px 1px 0px;
+  padding-bottom: 10px; }
 
 .thumbimg {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  padding-top: 10px;
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
 
 .title {
-  color: #a6a6a6; }
+  color: white; }
+
+input, textarea {
+  text-align: center;
+  width: 300px;
+  resize: none;
+  -ms-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  border: solid black 1px;
+  height: 20px;
+  font-size: 15px; }
+
+label {
+  font-size: 20px; }
+
+.newButtons {
+  color: black;
+  background: grey;
+  width: 200px;
+  border: solid black 1px;
+  font-size: 20px; }
+
+a {
+  padding-left: 90px;
+  padding-right: 90px;
+  text-decoration: none; }
+
+#newDiv {
+  min-width: 300px; }
+
+#editDiv {
+  text-align: center;
+  min-width: 300px; }
+
+.description {
+  height: 150px; }
+
+.buttonDiv {
+  width: 150px; }
+
+.loginRegister {
+  display: inline-block; }
+
+.slides {
+  height: 500px;
+  width: 700px;
+  margin: auto; }
+
+.leftButton {
+  display: inline-block; }

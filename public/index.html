@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+ <meta charset="UTF-8">
+ <title>Document</title>
+ <link rel="stylesheet" href="/css/app.css">
 </head>
+<h1>Welcome to _Architekt</h1>
+<br>
 <body>
-  LOGIN
-  <form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password">
-    <input type="submit"></input>
-  </form>
-  OR
-  REGISTER
-  <form action="/register" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password">
-    <input type="submit"></input>
-  </form>
+
+<div>
+ <img class="slides" src="http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1490029386/fishing-huts-flam-norway-NORWAY0320.jpg?itok=BngveyN6" alt="">
+ <img class="slides" src="https://res.cloudinary.com/simpleview/image/upload/c_fill,f_auto,h_388,q_65,w_560/v1/clients/norway/Blue_Hour_Alesund_Fjord_Norway_5e87e43a-fc95-4859-a6bf-a80de8104eef.jpg" alt="">
+ <img class="slides" src="https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5297440765001_5280261645001-vs.jpg?pubId=5104226627001&videoId=5280261645001" alt="">
+ <img class="slides" src="http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/Norway/Oslo/alesund-travel-2-xlarge.jpg" alt="">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+   var i;
+   var x = document.getElementsByClassName("slides");
+   for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+   }
+   myIndex++;
+   if (myIndex > x.length) {myIndex = 1}
+   x[myIndex-1].style.display = "block";
+   setTimeout(carousel, 3000);
+}
+</script>
+
+<br>
+ <div>
+   <div class="loginRegister">
+     LOGIN
+     <form action="/login" method="POST">
+       <input type="text" name="username" placeholder="username">
+       <br>
+       <input type="password" name="password" placeholder="password">
+       <br>
+       <input type="submit"></input>
+     </form>
+   </div>
+
+   <br><br>
+
+   <div class="loginRegister">
+     REGISTER
+     <form action="/register" method="POST">
+       <input type="text" name="username" placeholder="username">
+       <br>
+       <input type="password" name="password" placeholder="password">
+       <br>
+       <input type="submit"></input>
+     </form>
+   </div>
+
+ </div>
+
 </body>
 </html>
