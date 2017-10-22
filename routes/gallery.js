@@ -10,8 +10,9 @@ const user = db.user;
 
 router.get('/', (req, res) => {
   return Gallery.findAll()
-  .then ( (theGallery) => {
-    res.render('partials/gallery', {Gallery: theGallery});
+  .then ((gallery) => {
+    console.log(gallery);
+    res.render('partials/gallery', {gallery: gallery});
   });
 });
 
@@ -19,7 +20,11 @@ router.post('/', (req, res) => {
   const title = req.body.title;
   const link = req.body.link;
   const description = req.body.description;
-  return Gallery.create({title: title, link: link, description: description, userId: req.user.id})
+  return Gallery.create({
+    title: title,
+    link: link,
+    description: description,
+    userId: req.user.id})
   .then ((newGallery) => {
     return res.redirect('/gallery');
   });
@@ -33,23 +38,6 @@ router.get('/new', isAuthenticated, (req, res) => {
   res.render('partials/new', locals);
 });
 
-/*router.get('/:id', (req, res) => {
-  const galleryId = req.params.id;
-  return Gallery.findById(galleryId)
-  .then ((theGallery) => {
-    return user.findById(theGallery.userId)
-    .then((theUser) => {
-      let locals = {
-        id: galleryId,
-        user: theUser.username,
-        title: theGallery.dataValues.title,
-        link: theGallery.dataValues.link,
-        description: theGallery.dataValues.description
-      }
-      return res.render('partials/gallery_single', locals);
-    });
-  });
-});*/
 
 router.get('/:id', (req, res) => {
   const galleryId = req.params.id;
@@ -76,26 +64,26 @@ router.get('/:id', (req, res) => {
 
 
 router.get('/:id/edit', isAuthenticated, (req, res) => {
-  console.log('ROUTING TO EDIT? ');
   const galleryId = req.params.id;
     return Gallery.findById(galleryId)
-      .then((theGallery) => {
-        if(req.user.id === theGallery.userId){
-//          console.log(theGallery.dataValues);
-          let locals = {
-            id: req.params.id,
-            user: req.user.username,
-            title: theGallery.dataValues.title,
-            link: theGallery.dataValues.link,
-            description: theGallery.dataValues.description
+    .then((theGallery) => {
+        return user.findById(req.user.id)
+        .then((user) => {
+          if(req.user.id === theGallery.userId || user.role === 'admin'){
+            let locals = {
+              id: req.params.id,
+              user: req.user.username,
+              title: theGallery.dataValues.title,
+              link: theGallery.dataValues.link,
+              description: theGallery.dataValues.description
+            }
+            return res.render('partials/edit', locals);
+          }else{
+            return res.redirect(`/gallery/${galleryId}`);
           }
-          return res.render('partials/edit', locals);
-        }else{
-          return res.redirect('/');
-        }
-      });
+        })
+    });
 });
-
 
 router.delete('/:id', (req, res)=>{
   const galleryId = req.params.id;

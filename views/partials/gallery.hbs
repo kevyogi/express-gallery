@@ -9,12 +9,19 @@
   </div>
 </div>
 
-{{#each Gallery}}
-<a href="/gallery/{{id}}">
-  <div class="thumbnail">
-    <img class="thumbimg" src="{{link}}" alt="image here">
-    <div class="title"><b>{{title}}</b></div>
-    </div>
+<div id="galleryDiv">
+  {{#each gallery}}
+  <div>
+    <a href="/gallery/{{id}}">
+      <div class="thumbnail">
+        <img class="thumbimg" src="{{link}}" alt="image here">
+        <div class="title"><b>{{title}}</b></div>
+      </div>
+    </a>
   </div>
-</a>
   {{/each}}
+</div>
+
+
+
+

@@ -49,6 +49,14 @@ body {
       height: 77px;
       font-size: 30px; } }
   @media screen and (min-width: 900px) {
+    body #galleryDiv {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-around; }
+    body #holder {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-around; }
     body .thumbnail {
       max-width: 380px;
       height: 200px;
@@ -93,11 +101,14 @@ body {
       border-style: solid;
       border-width: 0px 0px 0px 1px; }
     body .viewSingle {
-      width: 700px;
+      width: 900px;
       display: inline-block; }
     body .sideBar {
       width: 280px;
-      display: inline-block; }
+      display: inline-block;
+      padding-top: 17px;
+      float: right;
+      margin-right: 210px; }
     body .thumbimgSingle {
       width: 100%;
       height: 100%;
@@ -106,9 +117,10 @@ body {
     body .imgwrapper {
       max-width: 700px; }
     body .imgSingle {
-      width: 700px;
-      height: 700px;
-      background-size: cover; } }
+      width: 900px;
+      height: 600px;
+      background-size: cover;
+      float: left; } }
 
 .headerwrapper {
   border-style: dotted;
@@ -118,7 +130,6 @@ body {
 .thumbimg {
   width: 100%;
   height: 100%;
-  padding-top: 10px;
   box-shadow: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3); }
 
 .title {
@@ -142,11 +153,8 @@ label {
 .newButtons {
   color: black;
   background: grey;
-  width: 200px;
   border: solid black 1px;
   font-size: 20px;
-  padding-left: 90px;
-  padding-right: 90px;
   text-decoration: none; }
 
 #newDiv {
@@ -162,13 +170,11 @@ label {
 .buttonDiv {
   width: 150px; }
 
-.loginRegister {
-  display: inline-block; }
-
 .slides {
   height: 500px;
   width: 700px;
   margin: auto; }
 
-.leftButton {
-  display: inline-block; }
+.buttonHolder {
+  width: 200px;
+  margin: auto; }

@@ -7,7 +7,9 @@
   <div class="welcomeSingle">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
   </div>
 </div>
-
+<br>
+<br>
+<br>
 <div id="holder">
   <div class="viewSingle">
     <div>{{title}}</div>
@@ -15,6 +17,13 @@
       <img class="imgSingle" src="{{link}}" alt="gallery image">
     </div>
     <div>{{description}}</div>
+    <div class="buttonHolder">
+  <a href="http://localhost:8888/gallery/{{id}}/edit">
+    <button class="newButtons">Edit</button>
+  </a>
+  <br>
+  <a href="http://localhost:8888/gallery" class="newButtons">Back to Gallery</a>
+    </div>
   </div>
 
   <div class="sideBar">
@@ -25,16 +34,15 @@
         <img class="thumbimg" src="{{link}}" alt="image here">
           <div class="title"><b>{{title}}</b>
           </div>
+          <br>
         </div>
     </a>
   {{/each}}
 
   </div>
 
-  <a href="http://localhost:8888/gallery/{{id}}/edit">
-    <button>Edit</button>
-  </a>
 </div>
+
 
 
 
