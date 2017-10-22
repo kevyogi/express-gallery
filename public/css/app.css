@@ -16,7 +16,10 @@
   margin-top: 150px; }
 
 body {
-  text-align: center; }
+  text-align: center;
+  background-image: url("/assets/bg3.png");
+  font-family: 'Unica One', cursive;
+  color: white; }
   @media screen and (min-width: 360px) {
     body .thumbnail {
       max-width: 380px;
@@ -49,7 +52,19 @@ body {
       height: 77px;
       font-size: 30px; } }
   @media screen and (min-width: 900px) {
+    body #welcomeH1 {
+      font-size: 60px; }
+    body #LRdiv {
+      width: 50%;
+      margin: auto;
+      display: flex;
+      flex-flow: row;
+      border: none;
+      font-size: 25px;
+      justify-content: space-around; }
     body #galleryDiv {
+      margin: auto;
+      width: 80%;
       display: flex;
       flex-flow: row;
       justify-content: space-around; }
@@ -71,11 +86,15 @@ body {
       flex-flow: column;
       justify-content: space-around;
       font-size: 100px; }
+    body .singleIMGdiv {
+      width: 100%; }
+    body .slides {
+      border-top-left-radius: 100px;
+      border-bottom-right-radius: 100px; }
     body .thumbnail {
       width: 100%;
       height: 200px;
-      display: inline-block;
-      margin: 1% 1% 5% 1%; }
+      display: inline-block; }
     body .welcome {
       display: inline-block;
       width: 30%;
@@ -153,11 +172,16 @@ label {
   font-size: 20px; }
 
 .newButtons {
-  color: black;
-  background: grey;
-  border: solid black 1px;
+  font-family: 'Unica One', cursive;
+  color: white;
+  background-color: transparent;
+  outline: none;
+  border: none;
   font-size: 20px;
   text-decoration: none; }
+
+#browse {
+  font-size: 40px; }
 
 #newDiv {
   min-width: 300px; }
