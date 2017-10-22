@@ -1,15 +1,15 @@
-<div class="headerwrapperSingle">
-    <div class="architectSingle">
-      <h1>_ARCHITEKT</h1>
+<div id="theHeader">
+  <div class="architectSingle">
+    <h1>_ARCHITEKT</h1>
+  </div>
+  <div id="lineDiv">|</div>
+  <div class="sideBarTop">
+    <div class="welcomeSingle">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
     </div>
-</div>
-<div class="sideBarTop">
-  <div class="welcomeSingle">Welcome to our online portfolio, we ae small group of passionate designers and architects, lookin to change and create amazing digital images to inspire others to follow in our innovative steps.
   </div>
 </div>
-<br>
-<br>
-<br>
+
+
 <div id="holder">
   <div class="viewSingle">
     <div>{{title}}</div>
@@ -26,9 +26,10 @@
     </div>
   </div>
 
-  <div class="sideBar">
 
+  <div class="sideBar">
   {{#each collection}}
+  <div>
     <a href="/gallery/{{id}}">
       <div class="thumbnail">
         <img class="thumbimg" src="{{link}}" alt="image here">
@@ -37,9 +38,11 @@
           <br>
         </div>
     </a>
-  {{/each}}
-
   </div>
+  {{/each}}
+  </div>
+
+
 
 </div>
 
